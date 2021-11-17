@@ -17,9 +17,6 @@ function computerPlay() {
 
 
 // TODO tidy up pseudocode...
-//      consider if there is a simpler way to create win condition...
-
-
 //console.log(computerPlay());
 
 // create const variable playerSelection = prompt('Rock, Paper, Scissors?')
@@ -32,6 +29,8 @@ const computerSelection = computerPlay();
 
 function playRound(playerSelection, computerSelection) {
     
+// TODO consider if there is a simpler way to create win condition...
+//      move if to else if and add invalid input condition...
     if (playerSelection === 'rock' && computerSelection === 'paper' ||
         playerSelection === 'paper' && computerSelection === 'scissors' ||
         playerSelection === 'scissors' && computerSelection === 'rock') {
