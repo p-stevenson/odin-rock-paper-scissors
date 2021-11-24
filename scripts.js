@@ -3,6 +3,7 @@ let computerSelection;
 
 function computerPlay() {
     const options = ['rock', 'paper', 'scissors'];
+    //  generate random number from options length.
     return options[Math.floor(Math.random() * options.length)];
 }
 
@@ -16,7 +17,7 @@ function game() {
     let lose;
     let win;
 
-    // moved playRound() inside game() to give access to lose and win variables
+    // moved playRound() inside game() to give access to lose and win variables.
     function playRound(playerSelection, computerSelection) {
         computerSelection = computerPlay();
         playerSelection = prompt('Rock, Paper or Scissors?').toLowerCase();
@@ -55,6 +56,7 @@ function game() {
  
         if (win) {
             playerScore++;
+            //  reset value
             win = null;
             console.log('playerScore ' + playerScore);
             if (playerScore === 5) {
@@ -63,6 +65,7 @@ function game() {
         }
         else if (lose) {
             computerScore++;
+            //  reset value
             lose = null;
             console.log('computerScore ' + computerScore);
             if (computerScore === 5) {
