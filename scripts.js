@@ -3,7 +3,6 @@ let computerSelection;
 
 function computerPlay() {
     const options = ['rock', 'paper', 'scissors'];
-    // randomly select option from array.
     return options[Math.floor(Math.random() * options.length)];
 }
 
@@ -11,14 +10,13 @@ function capitalizeFirstLetter(someString) {
     return (someString[0].toUpperCase() + someString.substring(1));
 }
 
-// main game function
 function game() {
     let playerScore = 0;
     let computerScore = 0;
     let lose;
     let win;
 
-    // logic for a single round
+    // moved playRound() inside game() to give access to lose and win variables
     function playRound(playerSelection, computerSelection) {
         computerSelection = computerPlay();
         playerSelection = prompt('Rock, Paper or Scissors?').toLowerCase();
@@ -54,7 +52,7 @@ function game() {
 
     do {
         playRound(playerSelection, computerSelection);
-        // checks for win or lose in playRound(), increments score and resets win/lose variable.
+ 
         if (win) {
             playerScore++;
             win = null;
