@@ -23,14 +23,16 @@ function game() {
         computerSelection = computerPlay();
         playerSelection = prompt('Rock, Paper or Scissors?').toLowerCase();
         
-        if (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
+        if (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 
+                'scissors') {
             alert('That is not a valid choice.');
         }
 
         else if (playerSelection === 'rock' && computerSelection === 'paper' ||
             playerSelection === 'paper' && computerSelection === 'scissors' ||
             playerSelection === 'scissors' && computerSelection === 'rock') {
-            alert('You Lose! ' + capitalizeFirstLetter(computerSelection) + ' beats ' + capitalizeFirstLetter(playerSelection) + '.');
+            alert('You Lose! ' + capitalizeFirstLetter(computerSelection) + ' beats ' + 
+                    capitalizeFirstLetter(playerSelection) + '.');
             lose = true;
             return lose;
         }
@@ -42,7 +44,8 @@ function game() {
         }
 
         else {
-            alert('You Win! ' + capitalizeFirstLetter(playerSelection) + ' beats ' + capitalizeFirstLetter(computerSelection) + '.');
+            alert('You Win! ' + capitalizeFirstLetter(playerSelection) + ' beats ' + 
+                    capitalizeFirstLetter(computerSelection) + '.');
             win = true;
             return win;
         }
