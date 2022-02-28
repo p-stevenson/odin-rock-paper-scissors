@@ -1,83 +1,54 @@
-let playerSelection;
-let computerSelection;
-
-function computerPlay() {
-    const options = ['rock', 'paper', 'scissors'];
-    //  generate random number from options length.
-    return options[Math.floor(Math.random() * options.length)];
+function computerPlay(){
+    const option = ['rock', 'paper', 'scissors'];
+    let computerSelection = option[Math.floor(Math.random()*option.length)];
+    return computerSelection;
 }
 
-function capitalizeFirstLetter(someString) {
-    return (someString[0].toUpperCase() + someString.substring(1));
+function playerPlay() {
+    let playerSelection = prompt('Choose your weapon...').toLowerCase();
+    while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+        playerSelection = prompt(`${playerSelection} is not a valid option, try again.`).toLowerCase();
+    }
+    return playerSelection;
 }
 
 function game() {
+    let round = 0;
     let playerScore = 0;
     let computerScore = 0;
-    let lose;
-    let win;
-
-    // moved playRound() inside game() to give access to lose and win variables.
+    while (playerScore <= 3 && computerScore <= 3) {
+        playRound(playerPlay(), computerPlay());
+        console.log(`Round ${++round}: Player ${playerScore} Computer ${computerScore}`);
+        if (playerScore === 3){
+            alert('Congratulations! you have defeated the computer.');
+            break;
+        } else if (computerScore === 3) {
+            alert('Game Over');
+            break;
+        } 
+    }
     function playRound(playerSelection, computerSelection) {
-        computerSelection = computerPlay();
-        playerSelection = prompt('Rock, Paper or Scissors?').toLowerCase();
-        
-        if (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 
-                'scissors') {
-            alert('That is not a valid choice.');
-        }
-
-        else if (playerSelection === 'rock' && computerSelection === 'paper' ||
-            playerSelection === 'paper' && computerSelection === 'scissors' ||
-            playerSelection === 'scissors' && computerSelection === 'rock') {
-            alert('You Lose! ' + capitalizeFirstLetter(computerSelection) + ' beats ' + 
-                    capitalizeFirstLetter(playerSelection) + '.');
-            lose = true;
-            return lose;
-        }
-
-        else if (playerSelection === 'rock' && computerSelection === 'rock' ||
-            playerSelection === 'paper' && computerSelection === 'paper' ||
-            playerSelection === 'scissors' && computerSelection === 'scissors') {
-            alert('It\s a tie, choose again.');
-        }
-
-        else {
-            alert('You Win! ' + capitalizeFirstLetter(playerSelection) + ' beats ' + 
-                    capitalizeFirstLetter(computerSelection) + '.');
-            win = true;
-            return win;
-        }
-
-    }
-
-    do {
-        playRound(playerSelection, computerSelection);
- 
-        if (win) {
-            playerScore++;
-            //  reset value
-            win = null;
-            console.log('playerScore ' + playerScore);
-            if (playerScore === 5) {
-                alert('bleep boop...defeated? how can this be...brrrrpppp...');
-            }
-        }
-        else if (lose) {
-            computerScore++;
-            //  reset value
-            lose = null;
-            console.log('computerScore ' + computerScore);
-            if (computerScore === 5) {
-                alert('AH..HA..HA...kneel before me puny human...');
-            }
-
+        switch (playerSelection === playerSelection && computerSelection === computerSelection) {
+            case playerSelection === 'rock' && computerSelection === 'scissors':
+            case playerSelection === 'scissors' && computerSelection === 'paper':
+            case playerSelection === 'paper' && computerSelection === 'rock':
+                alert(`You win! ${playerSelection} beats ${computerSelection}!`);
+                return (++playerScore);
+            case playerSelection === 'scissors' && computerSelection === 'rock':
+            case playerSelection === 'paper' && computerSelection === 'scissors':
+            case playerSelection === 'rock' && computerSelection === 'paper':
+                alert(`You lose...${computerSelection} beats ${playerSelection}`);
+                return (++computerScore);
+            case playerSelection === 'rock' && computerSelection === 'rock':
+            case playerSelection === 'paper' && computerSelection === 'paper':
+            case playerSelection === 'scissors' && computerSelection === 'scissors':
+                alert('It\'s a tie!, go again.');
+                break;
+            default:
+                alert('Sorry but you need to choose, Rock, Paper or Scissors');
+                break;
         }
     }
-
-    while (playerScore < 5 && computerScore < 5);
-
-
 }
 
 game();
