@@ -1,6 +1,6 @@
-function computerPlay(){
+function computerPlay() {
     const option = ['rock', 'paper', 'scissors'];
-    let computerSelection = option[Math.floor(Math.random()*option.length)];
+    let computerSelection = option[Math.floor(Math.random() * option.length)];
     return computerSelection;
 }
 
@@ -19,13 +19,13 @@ function game() {
     while (playerScore <= 3 && computerScore <= 3) {
         playRound(playerPlay(), computerPlay());
         console.log(`Round ${++round}: Player ${playerScore} Computer ${computerScore}`);
-        if (playerScore === 3){
+        if (playerScore === 3) {
             alert('Congratulations! you have defeated the computer.');
             break;
         } else if (computerScore === 3) {
             alert('Game Over');
             break;
-        } 
+        }
     }
     function playRound(playerSelection, computerSelection) {
         switch (playerSelection === playerSelection && computerSelection === computerSelection) {
