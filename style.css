@@ -1,5 +1,5 @@
 * {
-    border: 5px solid;
+/*     border: 5px solid; */
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
             margin: 0px;
@@ -37,6 +37,7 @@ body {
 }
 
 #paper {
+
     color: aqua;
     font-family: 'Pacifico', cursive;
     font-size: 200px;
@@ -44,8 +45,14 @@ body {
 /*     margin: auto; */
     animation: drop2 4s ease-out;
     animation-delay: 3.5s;
-    animation-fill-mode: forwards; 
+    animation-fill-mode:both;
 }
+
+/* .fadeInDown {
+    animation: visibility 4s ease-in;
+    animation-delay: 4s;
+    animation-duration: ;
+} */
 
 
 @keyframes drop {
@@ -64,7 +71,8 @@ body {
          opacity: 0%;
      }
      to {
-         transform: translateY(20vh);
+         transform: translateY(15vh);
      }
      
  }
+
