@@ -21,58 +21,86 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: hotpink;
+    background-color: #E12DBA;
     margin: 0px;
     height: 100vh;
 }
 
 #rock {
-    color: aqua;
-    font-family: 'Pacifico', cursive;
-    font-size: 200px;
+    color: #2DD8E1;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 180px;
     text-align: center;
 /*     margin: auto; */
-    animation: drop 4s ease-out;
+    animation: rockDrop .5s ease-in;
     animation-fill-mode: forwards; 
 }
 
 #paper {
-
-    color: aqua;
-    font-family: 'Pacifico', cursive;
+    color: #D4E12D;
+    font-family: 'Amatic SC', cursive;
     font-size: 200px;
+    font-weight: 700;
     text-align: center;
 /*     margin: auto; */
-    animation: drop2 4s ease-out;
-    animation-delay: 3.5s;
+    animation: paperFloat 2s ease-out;
+    animation-delay: .6s;
     animation-fill-mode:both;
 }
 
-/* .fadeInDown {
-    animation: visibility 4s ease-in;
-    animation-delay: 4s;
-    animation-duration: ;
-} */
-
-
-@keyframes drop {
-   from, 15% {
-        transform: translateY(-40vh);
-    }
-    to {
-        transform: translateY(20vh);
-    }
-    
+#scissors {
+    color: #2DE154;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 200px;
+    text-align: center;
+    padding-top: 325px;
+    animation: scissorsReveal .001s ease-out;
+    animation-delay: 2.7s;
+    animation-fill-mode: both;
 }
 
-@keyframes drop2 {
+@media(max-width: 900px){
+    #rock, #paper, #scissors {
+        font-size: 100px;
+    }
+    #scissors {
+        padding-top: 150px;
+    }
+}
+
+@media screen and (max-width: 300px){
+    #rock, #paper, #scissors {
+        font-size: 60px;
+    }
+}
+
+@keyframes rockDrop {
+   from, 15% {
+        transform: translateY(-250px);
+    }
+    to {
+        transform: translateY(150%);
+    }
+}
+
+@keyframes paperFloat {
     from, 0% {
-         transform: translateY(0vh);
+         transform: translateY(0px);
          opacity: 0%;
      }
      to {
-         transform: translateY(15vh);
+         transform: translateY(325px);
+         opacity: 100%;
      }
      
+ }
+
+ @keyframes scissorsReveal {
+     from, 0% {
+         opacity: 0%;
+     }
+     to {
+         opacity: 100%;
+     }
  }
 
