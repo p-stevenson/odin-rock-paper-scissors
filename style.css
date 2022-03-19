@@ -92,11 +92,13 @@ body, html {
     }
 }
 
-/* @media screen and (max-width: 300px){
+@media(max-width: 300px){
     #rock, #paper, #scissors {
-        font-size: 60px;
+        font-size: 11vh;
     }
-} */
+}
+
+
 
 /* -------------------------------------------------------------------------- */
 /* KEYFRAMES */
