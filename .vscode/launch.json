@@ -5,6 +5,12 @@
             "name": "http://127.0.0.1:3000/index.html",
             "request": "launch",
             "url": "http://127.0.0.1:3000/index.html"
+        },
+        {
+            "name": "Launch Microsoft Edge and open the Edge DevTools",
+            "request": "launch",
+            "type": "vscode-edge-devtools.debug",
+            "url": "http://127.0.0.1:3000/index.html" // Provide your project's url to finish configuring
         }
     ]
 }
