@@ -1,4 +1,4 @@
-let playerScore = 0;
+/* let playerScore = 0;
 let computerScore = 0;
 
 function computerPlay() {
@@ -41,7 +41,10 @@ function game() {
             console.log(`Round ${++round}: Player ${playerScore} Computer ${computerScore}`);
         });
     });
-    /* while (playerScore <= 3 && computerScore <= 3) {
+
+
+    
+    while (playerScore <= 3 && computerScore <= 3) {
         playRound(playerPlay(), computerPlay());
         if (playerScore === 3) {
             alert('Congratulations! you have defeated the computer.');
@@ -50,8 +53,13 @@ function game() {
             alert('Game Over');
             break;
         }
-    } */
+    } 
 }
 
 
-game();
+game(); */
+
+const blinkAnimation = document.querySelector('.scissors');
+blinkAnimation.addEventListener('animationend', () => {
+    console.log('that worked');
+});
