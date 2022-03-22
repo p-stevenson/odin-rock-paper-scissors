@@ -58,8 +58,13 @@ function game() {
 
 
 game(); */
-
+const testObject = document.querySelector('.testAnim');
 const blinkAnimation = document.querySelector('.scissors');
-blinkAnimation.addEventListener('animationend', () => {
-    console.log('that worked');
+blinkAnimation.addEventListener('animationend', (e) => {
+    if(e.animationName === "swipeDown") {
+        testObject.style.display = 'block'; 
+        console.log('that worked');
+
+    }
 });
+
