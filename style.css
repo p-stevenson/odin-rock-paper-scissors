@@ -98,11 +98,13 @@ body, html {
 
 .centerInner > .testAnim {
     display: none;
-    animation: blink .5s linear infinite;
     color: #e9c111;
     font-family: 'League Gothic', sans-serif;
     font-size: 15vh;
     text-align: center;
+    animation: infoReveal 6s linear;
+    animation-delay: 0s;
+    animation-fill-mode: both;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -112,8 +114,17 @@ body, html {
         0%{
             opacity: 0;
         }
-        100%{
+        25%{
             opacity: 1;
+        }
+        50%{
+            opacity: 0;
+        }
+        75%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
         }
     }
 
@@ -177,6 +188,15 @@ body, html {
     }
     100% {
         transform: translate3d(0, 200%, 0);
+    }
+}
+
+@keyframes infoReveal {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
     }
 }
 
