@@ -58,7 +58,10 @@ body, html {
     font-family: 'Permanent Marker', cursive;
     font-size: 15vh;
     text-align: center;
-    animation: rockDrop .5s ease-in;
+    animation-name: rockDrop, swipeRight;
+    animation-duration: 1s, 1s;
+    animation-delay: 0s, 4.5s;
+    /* animation-timing-function: cubic-bezier(.07, 2.02, .67, .57), linear; */
     animation-fill-mode: forwards;
 }
 
@@ -68,19 +71,113 @@ body, html {
     font-size: 15vh;
     font-weight: 700;
     text-align: center;
-    animation: paperFloat 3s ease-out;
+    animation-name: paperFloat, swipeLeft;
+    animation-duration: 3s, 1s;
+    animation-delay: 1s, 5s;
+    animation-timing-function: ease-out, cubic-bezier(0.45, -0.13, 0.74, 0.05);
+    animation-fill-mode: both;
+    /*     animation: paperFloat 3s ease-out;
     animation-delay: .7s;
-    animation-fill-mode:both;
+    animation-fill-mode:both; */
 }
+
+
 
 .centerInner > .scissors {
     color: #2DE154;
     font-family: 'League Gothic', sans-serif;
     font-size: 15vh;
     text-align: center;
-    animation: scissorsReveal .001s ease-out;
-    animation-delay: 3.8s;
+    animation-name: scissorsReveal, swipeDown;
+    animation-duration: .001s, .5s;
+    animation-delay: 4s, 5.7s;
+/*     animation: scissorsReveal .001s ease-out;
+    animation-delay: 3.8s; */
     animation-fill-mode: both;
+}
+
+.centerInner > .testAnim {
+    display: none;
+    animation: blink .5s linear infinite;
+    color: #e9c111;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 15vh;
+    text-align: center;
+}
+
+/* -------------------------------------------------------------------------- */
+/* KEYFRAMES */
+/* -------------------------------------------------------------------------- */
+@keyframes blink {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+
+@keyframes rockDrop {
+    from, 15% {
+        transform: translate3d(0, -200%, 0);
+        animation-timing-function: cubic-bezier(.07, 1.75, .67, .57);
+      }
+      50%,
+      60% {
+        transform: translate3d(0, 40%, 0);
+        animation-timing-function: cubic-bezier(.13, .84, .82, 1);
+      }
+      85%,
+      to {
+        transform: translate3d(0, 40%, 0);
+      }
+    }
+    
+@keyframes paperFloat {
+    0% {
+        transform: translate3d(0, -80%, 0);
+        opacity: 0%;
+        }
+    100% {
+        transform: translate3d(0, -20%, 0);    
+        opacity: 100%;
+        }            
+}
+@keyframes swipeRight {
+    0% {
+        animation-timing-function: cubic-bezier(0.45, -0.13, 0.74, 0.05);
+    }
+
+    100% {
+        transform: translate3d(500%, 40%, 0);
+    }
+}
+
+@keyframes swipeLeft {
+    100% {
+        transform: translate3d(-500%, -20%, 0)
+    }
+}
+   
+@keyframes scissorsReveal {
+    0% {
+        transform: translate3d(0, -80%, 0);
+        opacity: 0%;
+    }
+    100% {
+        transform: translate3d(0, -80%, 0);
+        opacity: 100%;
+    }
+}
+
+@keyframes swipeDown {
+    0% {
+        transform: translate3d(0, -80%, 0);
+        animation-timing-function: cubic-bezier(0.45, -0.2, 0.74, 0.05);
+    }
+    100% {
+        transform: translate3d(0, 200%, 0);
+    }
 }
 
 /* -------------------------------------------------------------------------- */
@@ -91,47 +188,10 @@ body, html {
         font-size: 13vh;
     }
 }
-
+    
 @media(max-width: 300px){
     #rock, #paper, #scissors {
         font-size: 11vh;
     }
 }
-
-
-
-/* -------------------------------------------------------------------------- */
-/* KEYFRAMES */
-/* -------------------------------------------------------------------------- */
-@keyframes rockDrop {
-   from, 15% {
-        transform: translateY(-200%);
-    }
-    to {
-        transform: translateY(40%);
-    }
-}
-
-@keyframes paperFloat {
-    from, 0% {
-         transform: translateY(-80%);
-         opacity: 0%;
-     }
-     to {
-         transform: translateY(-20%);
-         opacity: 100%;
-     }
-     
- }
-
- @keyframes scissorsReveal {
-     from, 0% {
-         opacity: 0%;
-         transform: translateY(-80%);
-     }
-     to {
-         opacity: 100%;
-         transform: translateY(-80%);
-     }
- }
-
+    
