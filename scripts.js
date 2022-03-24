@@ -66,7 +66,7 @@ blinkAnimation.addEventListener('animationend', (e) => {
         testObject.style.display = 'block';
         turnOffText.forEach((rpsItem) => {
             rpsItem.style.display = 'none'; 
-    });
+        });
     }
 });
 
