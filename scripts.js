@@ -58,13 +58,15 @@ function game() {
 
 
 game(); */
-const testObject = document.querySelector('.testAnim');
-const blinkAnimation = document.querySelector('.scissors');
+const testObject = document.querySelector('.infoItem');
+const turnOffText = document.querySelectorAll('.rpsItem');
+const blinkAnimation = document.querySelector('#scissors');
 blinkAnimation.addEventListener('animationend', (e) => {
     if(e.animationName === "swipeDown") {
-        testObject.style.display = 'block'; 
-        console.log('that worked');
-
+        testObject.style.display = 'block';
+        turnOffText.forEach((rpsItem) => {
+            rpsItem.style.display = 'none'; 
+    });
     }
 });
 
