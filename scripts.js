@@ -58,15 +58,30 @@ function game() {
 
 
 game(); */
-const testObject = document.querySelector('.infoItem');
-const turnOffText = document.querySelectorAll('.rpsItem');
-const blinkAnimation = document.querySelector('#scissors');
-blinkAnimation.addEventListener('animationend', (e) => {
-    if(e.animationName === "swipeDown") {
-        testObject.style.display = 'block';
-        turnOffText.forEach((rpsItem) => {
-            rpsItem.style.display = 'none'; 
-        });
-    }
-});
+displayInstructionsAnimation();
 
+const instructionsAnim = document.querySelector('.instructionsAnim');
+
+function displayInstructionsAnimation(){
+    const openingAnimationEnd = document.querySelector('#scissors');
+    const turnOffItemText = document.querySelectorAll('.rpsItem');
+    openingAnimationEnd.addEventListener('animationend', (e) => {
+        if(e.animationName === "swipeDown") {
+            turnOffItemText.forEach((rpsItem) => {
+                rpsItem.style.display = 'none'; 
+                instructionsAnim.style.display = 'block';
+            });
+            instructionsAnimation();
+        };
+    });
+}
+
+function instructionsAnimation() {
+    let delay = 900;
+    const infoMessage = ['JUST', 'PICK ', 'ONE.', 'READY?...', 'GO!'];
+    infoMessage.forEach((word, i) => {
+        setTimeout(() => { 
+            instructionsAnim.textContent = word
+        }, delay * i)
+    });
+}
