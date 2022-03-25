@@ -10,6 +10,7 @@
 body, html {
     border: none;
 }
+
 .main {
     border-color: #2DD8E1;
     display: flex;
@@ -38,11 +39,6 @@ body, html {
     max-width: 900px;
 }
 
-.cpuScoreContainer, .playerScoreContainer {
-    border-color: limegreen;
-    flex: 1 0 auto;
-    max-height: 15%;
-}
 
 .mainTextArea {
     border-color: mediumslateblue;
@@ -52,7 +48,24 @@ body, html {
     align-content: center;
     flex: 1 0 auto;
     max-width: 900px;
-    /* width:100% */
+}
+
+.scoreContainer {
+    border-color: limegreen;
+    display: flex;
+    flex-direction: column;
+    max-height: 15%;
+    flex: 1 0 auto;
+}
+
+#playerScoreContainer{
+    align-items: flex-end;
+    padding-top: 3%
+}
+
+#cpuScoreContainer {
+    align-items: flex-start;
+    padding-bottom: 3%;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -67,7 +80,6 @@ body, html {
     animation-name: rockDrop, swipeRight;
     animation-duration: 1s, 1s;
     animation-delay: 0s, 4.5s;
-    /* animation-timing-function: cubic-bezier(.07, 2.02, .67, .57), linear; */
     animation-fill-mode: forwards;
 }
 
@@ -83,9 +95,6 @@ body, html {
     animation-delay: 1s, 5s;
     animation-timing-function: ease-out, cubic-bezier(0.45, -0.13, 0.74, 0.05);
     animation-fill-mode: both;
-    /*     animation: paperFloat 3s ease-out;
-    animation-delay: .7s;
-    animation-fill-mode:both; */
 }
 
 .mainTextArea > #scissors {
@@ -97,8 +106,6 @@ body, html {
     animation-name: scissorsReveal, swipeDown;
     animation-duration: .001s, .5s;
     animation-delay: 4s, 5.7s;
-/*     animation: scissorsReveal .001s ease-out;
-    animation-delay: 3.8s; */
     animation-fill-mode: both;
 }
 
@@ -108,38 +115,19 @@ body, html {
     font-family: 'League Gothic', sans-serif;
     font-size: 15vh;
     text-align: center;
-    animation: infoReveal 6s linear;
-    animation-delay: 0s;
-    animation-fill-mode: both;
 }
 
-.playerScoreContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 900px;
-    flex: 1 0 auto;
-    padding-top: 3%
-}
-.cpuScoreContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    max-width: 900px;
-    flex: 1 0 auto;
-    padding-bottom: 3%;
-}
-.cpuScoreContainer > .score {
+.score{
+    display: none;
     color: white;
     font-family: 'League Gothic', sans-serif;
     font-size: 6vh;
-    margin-right: 5%;
 }
-.playerScoreContainer > .score {
-    color: white;
-    font-family: 'League Gothic', sans-serif;
-    font-size: 6vh;
+#cpuScore {
     margin-left: 5%;
+}
+#playerScore {
+    margin-right: 5%;
 }
 
 
