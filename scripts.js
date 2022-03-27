@@ -58,30 +58,47 @@ function game() {
 
 
 game(); */
+
 displayInstructionsAnimation();
 
-const instructionsAnim = document.querySelector('.instructionsAnim');
 
 function displayInstructionsAnimation(){
     const openingAnimationEnd = document.querySelector('#scissors');
-    const turnOffItemText = document.querySelectorAll('.rpsItem');
+
     openingAnimationEnd.addEventListener('animationend', (e) => {
         if(e.animationName === "swipeDown") {
-            turnOffItemText.forEach((rpsItem) => {
-                rpsItem.style.display = 'none'; 
-                instructionsAnim.style.display = 'block';
-            });
-            instructionsAnimation();
+            clearMainTextArea();
+            playInstructAnimation();
         };
     });
 }
 
-function instructionsAnimation() {
-    let delay = 900;
+function playInstructAnimation() {
     const infoMessage = ['JUST', 'PICK ', 'ONE.', 'READY?...', 'GO!'];
-    infoMessage.forEach((word, i) => {
-        setTimeout(() => { 
-            instructionsAnim.textContent = word
-        }, delay * i)
+    const mainTextArea = document.querySelector('.mainTextArea');
+    const instructPlayer = document.createElement('p');
+    instructPlayer.classList.add('instructPlayer');
+    mainTextArea.appendChild(instructPlayer);
+    
+    for (let i = 0; i < infoMessage.length; i++) {
+        delayTime(i);
+    }
+    function delayTime(i) {
+        setTimeout(() => {
+            instructPlayer.textContent = infoMessage[i]
+        }, 1200 * i);
+    };
+    setTimeout(() => {
+        clearMainTextArea();
+        // Add Selector to display player and computer Score.
+        // make it a global variable so you can reuse it for updating score later.
+    }, 6000);
+}
+
+function clearMainTextArea() {
+    const mainTextArea = document.querySelector('.mainTextArea');
+    const allParagraphs = document.querySelectorAll('div.mainTextArea > p');
+    allParagraphs.forEach((p) => {
+        mainTextArea.removeChild(p);
     });
 }

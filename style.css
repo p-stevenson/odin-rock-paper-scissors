@@ -109,12 +109,16 @@ body, html {
     animation-fill-mode: both;
 }
 
-.mainTextArea > #infoText {
-    display: none;
+.mainTextArea > .instructPlayer{
     color: #e9c111;
     font-family: 'League Gothic', sans-serif;
     font-size: 15vh;
     text-align: center;
+    /* animation: blink2 1.2s infinite; */
+    animation-name: blink2, blink;
+    animation-iteration-count: infinite;
+    animation-duration: 1.2s, .5s;
+    animation-delay:0s, 4.8s;
 }
 
 .score{
@@ -152,6 +156,18 @@ body, html {
             opacity: 0;
         }
     }
+
+@keyframes blink2 {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
 
 @keyframes rockDrop {
     from, 15% {
