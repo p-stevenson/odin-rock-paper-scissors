@@ -1,6 +1,6 @@
-/* let playerScore = 0;
 let computerScore = 0;
-
+let playerScore = 0;
+ 
 function computerPlay() {
     const option = ['rock', 'paper', 'scissors'];
     let computerSelection = option[Math.floor(Math.random() * option.length)];
@@ -38,13 +38,14 @@ function game() {
             playerSelection = button.value;
             computerSelection = computerPlay();
             playRound(playerSelection, computerSelection);
+            updateScore();
             console.log(`Round ${++round}: Player ${playerScore} Computer ${computerScore}`);
         });
     });
 
 
     
-    while (playerScore <= 3 && computerScore <= 3) {
+/*     while (playerScore <= 3 && computerScore <= 3) {
         playRound(playerPlay(), computerPlay());
         if (playerScore === 3) {
             alert('Congratulations! you have defeated the computer.');
@@ -53,16 +54,16 @@ function game() {
             alert('Game Over');
             break;
         }
-    } 
+    }  */
 }
 
 
-game(); */
+game();
 
-displayInstructionsAnimation();
+showInstructionsAnimation();
 
 
-function displayInstructionsAnimation(){
+function showInstructionsAnimation(){
     const openingAnimationEnd = document.querySelector('#scissors');
 
     openingAnimationEnd.addEventListener('animationend', (e) => {
@@ -90,8 +91,7 @@ function playInstructAnimation() {
     };
     setTimeout(() => {
         clearMainTextArea();
-        // Add Selector to display player and computer Score.
-        // make it a global variable so you can reuse it for updating score later.
+        showScore();
     }, 6000);
 }
 
@@ -102,3 +102,71 @@ function clearMainTextArea() {
         mainTextArea.removeChild(p);
     });
 }
+
+function showScore() {
+    const scoreText = document.querySelectorAll('.score');
+
+    scoreText.forEach((score) => {
+        score.style.display = 'block';
+    });    
+    updateScore();
+    showChoices();
+}
+
+function updateScore() {
+    const cpuScoreText = document.querySelector('#cpuScore');
+    const playerScoreText = document.querySelector('#playerScore');    
+    cpuScoreText.textContent = `CPU: ${computerScore}`;
+    playerScoreText.textContent = `PLAYER: ${playerScore}`;
+}
+
+
+
+function showChoices() {
+    let num = Math.floor(Math.random() * 3);
+    for(i = 0; i < 1; i++) {
+        if(num === 0) {
+            rockButton();
+        } else if(num === 1) {
+            paperButton();
+        } else if(num === 2) {
+            scissorsButton();
+        }
+    }
+}
+
+// first thing is to fix button styling.
+function rockButton() {
+    const rockButton = document.createElement('button');
+    const mainTextArea = document.querySelector('.mainTextArea');
+    mainTextArea.appendChild(rockButton);
+    rockButton.classList.add('rockButton');
+    rockButton.setAttribute('id', 'rockButton');
+    rockButton.setAttribute('value', 'rock');
+    rockButton.textContent = 'ROCK';
+    // rockButton.style.display = 'block';
+}
+
+function paperButton() {
+    const paperButton = document.createElement('button');
+    const mainTextArea = document.querySelector('.mainTextArea');
+    mainTextArea.appendChild(paperButton);
+    paperButton.classList.add('paperButton');
+    paperButton.setAttribute('id', 'paperButton');
+    paperButton.setAttribute('value', 'paper');
+    paperButton.textContent = 'PAPER';
+    // paperButton.style.display = 'block';
+}
+
+function scissorsButton() {
+    const scissorsButton = document.createElement('button');
+    const mainTextArea = document.querySelector('.mainTextArea');
+    mainTextArea.appendChild(scissorsButton);
+    scissorsButton.classList.add('scissorsButton');
+    scissorsButton.setAttribute('id', 'scissorsButton');
+    scissorsButton.setAttribute('value', 'scissors');
+    scissorsButton.textContent = 'SCISSORS';
+    // scissorsButton.style.display = 'block';
+}
+
+
