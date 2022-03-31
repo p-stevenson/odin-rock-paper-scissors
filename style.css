@@ -144,35 +144,41 @@ body, html {
 }
 
 .mainTextArea > #rockButton {
-    display: block;
     color: #2DD8E1;
     font-family: 'Permanent Marker', cursive;
     font-size: 15vh;
     text-align: center;
-    animation: blink .5s linear infinite;
+    animation: blink2 .5s linear infinite;
     background: none;
     border: none;
 }
 .mainTextArea > #paperButton {
-    display: block;
+
     color: #D4E12D;
     font-family: 'Amatic SC', cursive;
     font-size: 15vh;
     font-weight: 700;
     text-align: center;
-    animation: blink .5s linear infinite;
+    animation: blink2 .5s linear infinite;
     background: none;
     border: none;
 }
 .mainTextArea > #scissorsButton {
-    display: block;
+
     color: #2DE154;
     font-family: 'League Gothic', sans-serif;
     font-size: 15vh;
     text-align: center;
-    animation: blink .5s linear infinite;
+    animation: blink2 .5s linear infinite;
     background: none;
     border: none;
+}
+
+.interRoundMessage {
+    color: #e9c111;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 15vh;
+    text-align: center;
 }
 
 
