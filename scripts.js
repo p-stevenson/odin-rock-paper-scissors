@@ -22,7 +22,7 @@ function clearMainTextArea() {
     });
     allButtons.forEach((button) => {
         mainTextArea.removeChild(button);
-    })
+    });
 }
 
 function playInstructAnim() {
@@ -51,13 +51,12 @@ function startGame() {
     
     scoreText.forEach((score) => {
         score.style.display = 'block';
+        checkScore();
         pickOne();
     });
-    
 }
 
 function pickOne() {
-    checkScore();
     clearMainTextArea();
     i = Math.floor(Math.random() * 3);
     if (i === 0) {
@@ -67,7 +66,7 @@ function pickOne() {
     } else {
         scissorsButton();
     }
-    setTimeout(pickOne(), 300);
+    setTimeout(pickOne, 300);
 }
 
 function rockButton() {
@@ -78,6 +77,7 @@ function rockButton() {
         computerSelection = computerPlay();
         playRound(playerSelection, computerPlay());
         updateScore();
+        checkScore();
     });
     mainTextArea.appendChild(rockButton);
     rockButton.classList.add('rockButton');
@@ -94,6 +94,7 @@ function paperButton() {
         computerSelection = computerPlay();
         playRound(playerSelection, computerSelection);
         updateScore();
+        checkScore();
     });
     mainTextArea.appendChild(paperButton);
     paperButton.classList.add('paperButton');
@@ -110,6 +111,7 @@ function scissorsButton() {
         computerSelection = computerPlay();
         playRound(playerSelection, computerSelection);
         updateScore();
+        checkScore();
     })
     mainTextArea.appendChild(scissorsButton);
     scissorsButton.classList.add('scissorsButton');
@@ -120,11 +122,9 @@ function scissorsButton() {
 
 function checkScore() {
     if (playerScore === 3) {
-        console.log('you win');
-        location.reload();
+        gameWinMessage();
     } else if (computerScore === 3) {
-        console.log('you lose');
-        location.reload();
+        gameLoseMessage();
     }
 }
 
@@ -147,51 +147,127 @@ function playRound(playerSelection, computerSelection) {
         case playerSelection === 'scissors' && computerSelection === 'paper':
         case playerSelection === 'paper' && computerSelection === 'rock':
             roundWin();
-            // alert(`You win! ${playerSelection} beats ${computerSelection}!`);
             return (++playerScore);
         case playerSelection === 'scissors' && computerSelection === 'rock':
         case playerSelection === 'paper' && computerSelection === 'scissors':
         case playerSelection === 'rock' && computerSelection === 'paper':
             roundLoss();
-            // alert(`You lose...${computerSelection} beats ${playerSelection}`);
             return (++computerScore);
         case playerSelection === 'rock' && computerSelection === 'rock':
         case playerSelection === 'paper' && computerSelection === 'paper':
         case playerSelection === 'scissors' && computerSelection === 'scissors':
             roundDraw();
-            // alert('It\'s a tie!, go again.');
             break;
         default:
             break;
     }
 }
 
-function roundWin(){
-    clearMainTextArea();
-    mainTextArea = document.querySelector('.mainTextArea');
+function roundWin() {
+    containerInner = document.querySelector('.containerInner');
+
     roundWinMessage = document.createElement('p');
     roundWinMessage.setAttribute('id', 'roundWinMessage');
     roundWinMessage.classList.add('interRoundMessage');
-    roundWinMessage.textContent = `YOU WON THIS ROUND, ${playerSelection} beats ${computerSelection}`;
-    mainTextArea.appendChild(roundWinMessage);
+    roundWinMessage.textContent = `YOU WON ${playerSelection.toUpperCase()} BEATS ${computerSelection.toUpperCase()}`;
+
+    tempMessageDiv = document.createElement('div');
+    tempMessageDiv.classList.add('tempMessageDiv');
+
+    tempMessageDiv.appendChild(roundWinMessage);
+    containerInner.appendChild(tempMessageDiv);
+    
+    setTimeout(() => {
+        containerInner.removeChild(tempMessageDiv)
+    }, 1200);
 }
-function roundLoss(){
-    clearMainTextArea();
-    mainTextArea = document.querySelector('.mainTextArea');
+
+function roundLoss() {
+    containerInner = document.querySelector('.containerInner');
+
     roundLossMessage = document.createElement('p');
     roundLossMessage.setAttribute('id', 'roundLossMessage');
     roundLossMessage.classList.add('interRoundMessage');
-    roundLossMessage.textContent = `YOU LOST THIS ROUND, ${computerSelection} beats ${playerSelection}`;
-    mainTextArea.appendChild(roundLossMessage);
+    roundLossMessage.textContent = `YOU LOSE ${computerSelection.toUpperCase()} BEATS ${playerSelection.toUpperCase()}`;
+
+    tempMessageDiv = document.createElement('div');
+    tempMessageDiv.classList.add('tempMessageDiv');
+
+    tempMessageDiv.appendChild(roundLossMessage);
+    containerInner.appendChild(tempMessageDiv);
+    
+    setTimeout(() => {
+        containerInner.removeChild(tempMessageDiv)
+    }, 1200);
 }
-function roundDraw(){
-    clearMainTextArea();
-    mainTextArea = document.querySelector('.mainTextArea');
+
+function roundDraw() {
+    containerInner = document.querySelector('.containerInner');
+
     roundDrawMessage = document.createElement('p');
     roundDrawMessage.setAttribute('id', 'roundDrawMessage');
     roundDrawMessage.classList.add('interRoundMessage');
     roundDrawMessage.textContent = `IT'S A TIE, GO AGAIN!`;
-    mainTextArea.appendChild(roundDrawMessage);
+
+    tempMessageDiv = document.createElement('div');
+    tempMessageDiv.classList.add('tempMessageDiv');
+
+    tempMessageDiv.appendChild(roundDrawMessage);
+    containerInner.appendChild(tempMessageDiv);
+    
+    setTimeout(() => {
+        containerInner.removeChild(tempMessageDiv)
+    }, 1200);
+}
+
+function gameWinMessage() {
+    containerInner = document.querySelector('.containerInner');
+
+    gameWinMessage = document.createElement('p');
+    gameWinMessage.classList.add('gameWinMessage');
+    gameWinMessage.setAttribute('id', 'gameWinMessage');
+    gameWinMessage.textContent = 'YOU WIN! \nPLAY AGAIN?';
+
+    reloadButton = document.createElement('button');
+    reloadButton.setAttribute('id', 'reloadButton');
+    reloadButton.textContent = 'YES';
+
+    tempMessageDiv = document.createElement('div');
+    tempMessageDiv.classList.add('tempMessageDiv');
+    setTimeout(() => {
+        tempMessageDiv.appendChild(gameWinMessage);
+        tempMessageDiv.appendChild(reloadButton);
+        containerInner.appendChild(tempMessageDiv);
+    }, 1400);
+    
+    reloadButton.addEventListener('click', () => {
+        location.reload();
+    });
+}
+
+function gameLoseMessage() {
+    containerInner = document.querySelector('.containerInner');
+
+    gameLoseMessage = document.createElement('p');
+    gameLoseMessage.classList.add('gameLoseMessage');
+    gameLoseMessage.setAttribute('id', 'gameLoseMessage');
+    gameLoseMessage.textContent = 'YOU LOSE... \nPLAY AGAIN?';
+
+    reloadButton = document.createElement('button');
+    reloadButton.setAttribute('id', 'reloadButton');
+    reloadButton.textContent = 'YES';
+
+    tempMessageDiv = document.createElement('div');
+    tempMessageDiv.classList.add('tempMessageDiv');
+    setTimeout(() => {
+        tempMessageDiv.appendChild(gameLoseMessage);
+        tempMessageDiv.appendChild(reloadButton);
+        containerInner.appendChild(tempMessageDiv);
+    }, 1400);
+    
+    reloadButton.addEventListener('click', () => {
+        location.reload();
+    });
 }
 
 prepareInstructAnim();

@@ -29,6 +29,7 @@ body, html {
 }
 
 .containerInner {
+    position: relative;
     border-color: black;
     display: flex;
     flex: 2 2 auto;
@@ -48,6 +49,20 @@ body, html {
     align-content: center;
     flex: 1 0 auto;
     max-width: 900px;
+}
+
+.tempMessageDiv {
+    border-color: mediumspringgreen;
+    background-color: hotpink;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    align-content: center;
+    justify-content: space-around;
 }
 
 .scoreContainer {
@@ -148,9 +163,10 @@ body, html {
     font-family: 'Permanent Marker', cursive;
     font-size: 15vh;
     text-align: center;
-    animation: blink2 .5s linear infinite;
+    animation: blink2 .3s linear infinite;
     background: none;
     border: none;
+    cursor: crosshair;
 }
 .mainTextArea > #paperButton {
 
@@ -159,9 +175,10 @@ body, html {
     font-size: 15vh;
     font-weight: 700;
     text-align: center;
-    animation: blink2 .5s linear infinite;
+    animation: blink2 .3s linear infinite;
     background: none;
     border: none;
+    cursor: crosshair;
 }
 .mainTextArea > #scissorsButton {
 
@@ -169,18 +186,28 @@ body, html {
     font-family: 'League Gothic', sans-serif;
     font-size: 15vh;
     text-align: center;
-    animation: blink2 .5s linear infinite;
+    animation: blink2 .3s linear infinite;
     background: none;
     border: none;
+    cursor: crosshair;
 }
 
-.interRoundMessage {
-    color: #e9c111;
+.interRoundMessage, .gameWinMessage, .gameLoseMessage {
+    color: white;
     font-family: 'League Gothic', sans-serif;
-    font-size: 15vh;
+    font-size: 13vh;
     text-align: center;
 }
 
+#reloadButton {
+    color: white;
+    background-color: hotpink;
+    border: none;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 13vh;
+    text-align: center;
+    cursor: crosshair;
+}
 
 /* -------------------------------------------------------------------------- */
 /* KEYFRAMES */
